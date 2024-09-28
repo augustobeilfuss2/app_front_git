@@ -1,0 +1,26 @@
+@import './base.css';
+
+
+.button {
+  margin: 5px; 
+  cursor:pointer;
+  background-color: #126b4a; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  }
+  .button:hover {opacity: 0.9}
+
+
+  .elements {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    background-color: rgb(30, 78, 38);
+  }
