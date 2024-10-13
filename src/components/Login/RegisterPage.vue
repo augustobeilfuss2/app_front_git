@@ -56,12 +56,15 @@ axios.request(config)
   <div class="forms">
     <div class="forms-div">
       <label>Email:</label><br>
-      <input v-model="email" type="email"><br>
+      <input v-model="email" type="email" class="input"><br>
       <label>Usuario:</label><br>
-      <input v-model="user" type="text"><br>
+      <input v-model="user" type="text" class="input"><br>
       <label>Senha:</label><br>
-      <input v-model="password" type="password"><br>
-      <button class="button" @click="Register">Registrar</button>
+      <input v-model="password" type="password" class="input"><br>
+      <div class="spacing"></div>
+      <v-btn
+      text="Registrar"
+      @click="Register"></v-btn> 
     </div>  
   </div>
 </template>
@@ -75,6 +78,8 @@ axios.request(config)
  
 
   }
+
+
 .forms-div{
   display: flexbox;
   margin: 0;

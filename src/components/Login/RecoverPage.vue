@@ -4,21 +4,11 @@ import { useAuthStore } from '@/stores/auth.js'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const user = ref('')
+const email = ref('')
 const password = ref('')
 
-async function login(){
-   const auth = useAuthStore();
-   let credentials = JSON.stringify({
-           "username": user.value,
-           "password": password.value
-         })
-await auth.login(credentials)
-if(auth.token !=null){
-  
-  router.push({ name: 'Home'})
-
-} 
+async function recover(){
+console.log('recover')
 
 }
 </script>
@@ -28,14 +18,12 @@ if(auth.token !=null){
   <div class="forms">
     <div class="forms-div">
      
-        <label>Usuario:</label><br>
-        <input v-model="user" type="text" class="input"><br>
-        <label>Senha:</label><br>
-        <input v-model="password" type="password" class="input"><br>
+        <label>Email:</label><br>
+        <input v-model="email" type="text" class="input"><br>
         <div class="spacing"></div>   
         <v-btn
-      text="Login"
-      @click="login"></v-btn>    
+      text="recover"
+      @click="recover"></v-btn>    
     </div>
 
    

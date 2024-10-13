@@ -2,6 +2,7 @@
 
 import LoginPage from './LoginPage.vue';
 import RegisterPage from './RegisterPage.vue';
+import RecoverPage from './RecoverPage.vue';
 
 
 
@@ -18,6 +19,9 @@ export default {
     Register() {
       this.currentComponent = RegisterPage; // Substitua por seu componente
     },
+    Recover() {
+      this.currentComponent = RecoverPage; // Substitua por seu componente
+    },
   },
 
 
@@ -31,21 +35,37 @@ export default {
   <body>  
 
     <div class="box center-box"> 
-
+      
       <div class="elements">
-        <button class="button" @click="Login">Login</button>
-        <button class="button" @click="Register">Registro</button>
+        
+        <v-btn
+      text="Login"
+      @click="Login"></v-btn> 
+      <div class="spacing"></div>
+      <v-btn
+      text="Registro"
+      @click="Register"></v-btn> 
+      
       </div>
-    
+   
       <div class="elements">
+        
         <div>
+          <div class="spacing"></div>
+          <div class="spacing"></div>
+          <div class="spacing"></div>
           <div class="wrapper">
           <component :is="currentComponent"></component> 
+          
           </div>
-          <strong>Current route path:</strong> {{ $route.fullPath }}
+          
+
         </div>
+        
       </div>
-    
+      <v-btn size="x-small"
+      text="Esqueci minhas senha"
+      @click="Recover"></v-btn> 
   </div>
 
   </body>
@@ -55,8 +75,15 @@ export default {
 <style scoped>
 
 
+
+  .spacing{
+
+    padding: 10px;
+  }
+
   .center-box{
-    margin: 0;
+    border: 20px;
+    padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;

@@ -22,7 +22,7 @@ export const useAuthStore = defineStore('auth', () =>  {
       try {
         const response = await axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+         
           const { token, user_id } = response.data;
 
 
@@ -30,11 +30,6 @@ export const useAuthStore = defineStore('auth', () =>  {
         this.isAuthenticated = true;
 
         this.user_id = user_id
-
-        console.log(token)
-        console.log(isAuthenticated)
-        console.log(user_id)
-
         // Store the token securely (e.g., in localStorage or sessionStorage)
         localStorage.setItem('token', token);
 

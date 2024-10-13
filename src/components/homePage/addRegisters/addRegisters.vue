@@ -10,16 +10,20 @@ const store = useAuthStore()
 const description = ref('')
 const date = ref('')
 const value = ref('')
+const addedtag = ref('')
+let tags = ref('')
+const data = new Date() 
+let dataAtual = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toISOString('en-US', 'America/Sao_Paulo').slice(0,10);
 
 function Gravar() {{
-    console.log(date.value)
-    console.log(description.value)
+
 
   let registro = JSON.stringify({
   "user": store.user_id, 
-  "date": date.value,
+  "date": dataAtual,
   "description": description.value,
-  "value": value.value
+  "value": value.value,
+  "tags": addedtag.value
 });
 
 let config = {
@@ -38,8 +42,6 @@ let config = {
 
 axios.request(config)
 .then((response) => {
-  console.log(JSON.stringify(response.data));
-  console.log(response.status);
   if (response.status=201){
     console.log("gravou");
     router.push({ name: 'Home'})
@@ -50,12 +52,18 @@ axios.request(config)
 })
 ;
 
-console.log(store.token)
-console.log(store.user_id)
 
 }
 
 }
+
+
+axios.get('http://localhost:8000/api/registros/tag/')
+            .then(response => {(tags = JSON.stringify(response.data))
+            tags=JSON.parse(tags)
+
+          })
+
 
 </script>
 
@@ -66,16 +74,22 @@ console.log(store.user_id)
  
     <div style="width: 100%;"> 
       <label>Data:</label><br>
-      <input v-model="date" type="date" style="width: 100%;"><br>
+      <input v-model="dataAtual" type="date" class="input" style="width: 90%;"><br>
     </div>
     <div style="width: 100%;">
       <label>Descricao:</label><br>
-      <input v-model="description" type="text"><br>
+      <input v-model="description" type="text" class="input" style="width: 90%;"><br>
     </div>
     <div style="width: 100%;">
       <label>Valor:</label><br>
-      <CurrencyInput v-model="value" :options="{ currency: 'BRL', autoDecimalDigits:true }"/>
+      <CurrencyInput v-model="value" class="input" style="width: 90%;" :options="{ currency: 'BRL', autoDecimalDigits:true }"/>
     </div style="width: 100%;">
+    <div style="width: 100%;">
+      <label>Tag:</label><br>
+        <select v-model="addedtag">
+          <option v-for="tag in tags" :value="tag.tags">{{ tag.tags }}</option>
+        </select>
+    </div>
     <div >     
       <v-btn
       text="Gravar"
@@ -90,7 +104,7 @@ console.log(store.user_id)
   .elements {
     display: flex;
     flex-direction: column;
-    background-color: transparent;
+    background-color: rgb(30, 78, 38);
   }
 
 

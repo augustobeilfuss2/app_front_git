@@ -24,3 +24,19 @@
     padding: 10px;
     background-color: rgb(30, 78, 38);
   }
+
+  .input {
+    margin: 5px;
+    border-bottom: 2px solid rgb(44, 128, 55);
+  }
+
+  .spacing{
+
+    padding: 10px;
+  }
+
+
+  
+  .style-1 td {
+    height: 500px !important;
+ }

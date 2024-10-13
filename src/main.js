@@ -3,7 +3,8 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import { createApp } from 'vue'
 import App from './App.vue'
 import Login from './components/Login/LoginRegister.vue'
-import HomePage from './components/addRegisters/HomePage.vue'
+import HomePage from './components/homePage/HomePage.vue'
+import desempenho from './components/desempenho/desempenho.vue'
 import { createPinia } from 'pinia'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -29,6 +30,8 @@ const routes = [
     { path: '/', component: App.vue },
     { path: '/',name: 'Login', component: Login},
     { path: '/home',name: 'Home', component: HomePage},
+    { path: `/dashboards`, name: 'desempenho', component: desempenho}
+
     ]
     const router = createRouter({
       history: createMemoryHistory(),

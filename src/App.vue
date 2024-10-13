@@ -11,7 +11,7 @@ router.push({ name: 'Login'})
 
 
 <template>
-<strong>Current route path:</strong> {{ currentRouteName }}
+
   <router-view ></router-view>
 
 
